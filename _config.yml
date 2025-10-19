@@ -1,2 +1,19 @@
 # Jekyll configuration file
 # Add your Jekyll configuration here
+title: "Viktor Plattner"
+description: "Neuroscientist • Data/Systems • Lab Infrastructure"
+theme: minima
+markdown: kramdown
+plugins: []
+author:
+  name: "Viktor Plattner"
+  email: ""
+minima:
+  social_links:
+    - { platform: github, user_url: "https://github.com/viktorpm" }
+    - { platform: linkedin, user_url: "https://www.linkedin.com/in/" }
+    # add more if you want
+defaults:
+  - scope: { path: "" }
+    values:
+      layout: "page"

@@ -1,1 +1,122 @@
-[]
+{
+  "pinned": [
+    {
+      "name": "glyci_analysis",
+      "description": "Code and data supporting our publication \"A cortico-subcortical loop for motor control via the pontine reticular formation\"",
+      "url": "https://github.com/viktorpm/glyci_analysis",
+      "stargazerCount": 0,
+      "primaryLanguage": {
+        "name": "R"
+      },
+      "topics": []
+    },
+    {
+      "name": "brainglobe-atlasapi",
+      "description": "A Python interface to access neuroanatomical atlases",
+      "url": "https://github.com/brainglobe/brainglobe-atlasapi",
+      "stargazerCount": 164,
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "topics": [
+        "neuroscience",
+        "python",
+        "microscopy",
+        "registration",
+        "visualisation",
+        "brain",
+        "atlases"
+      ]
+    },
+    {
+      "name": "brainglobe-template-builder",
+      "description": "Build unbiased anatomical templates from individual images",
+      "url": "https://github.com/brainglobe/brainglobe-template-builder",
+      "stargazerCount": 12,
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "topics": []
+    },
+    {
+      "name": "ratter",
+      "description": " BControl code for our high-throughput behavior training facility",
+      "url": "https://github.com/LIMLabSWC/ratter",
+      "stargazerCount": 0,
+      "primaryLanguage": {
+        "name": "MATLAB"
+      },
+      "topics": []
+    },
+    {
+      "name": "shiny-performance-tracking",
+      "description": "ShinyApp to visualize the performance of subjects training on different behaviour protocols",
+      "url": "https://github.com/LIMLabSWC/shiny-performance-tracking",
+      "stargazerCount": 0,
+      "primaryLanguage": {
+        "name": "R"
+      },
+      "topics": []
+    }
+  ],
+  "recent": [
+    {
+      "name": "viktorpm.github.io",
+      "description": null,
+      "url": "https://github.com/viktorpm/viktorpm.github.io",
+      "stargazerCount": 0,
+      "forkCount": 0,
+      "updatedAt": "2025-10-19T11:21:00Z",
+      "primaryLanguage": null,
+      "topics": []
+    },
+    {
+      "name": "veriphi",
+      "description": "Guadrails for agentic AI tool use",
+      "url": "https://github.com/viktorpm/veriphi",
+      "stargazerCount": 0,
+      "forkCount": 0,
+      "updatedAt": "2025-09-25T17:49:19Z",
+      "primaryLanguage": {
+        "name": "Rust"
+      },
+      "topics": []
+    },
+    {
+      "name": "glyci_analysis",
+      "description": "Code and data supporting our publication \"A cortico-subcortical loop for motor control via the pontine reticular formation\"",
+      "url": "https://github.com/viktorpm/glyci_analysis",
+      "stargazerCount": 0,
+      "forkCount": 0,
+      "updatedAt": "2024-12-16T11:06:47Z",
+      "primaryLanguage": {
+        "name": "R"
+      },
+      "topics": []
+    },
+    {
+      "name": "bg-atlasgen",
+      "description": "Tools for packaging atlases for use with BrainGlobe",
+      "url": "https://github.com/viktorpm/bg-atlasgen",
+      "stargazerCount": 0,
+      "forkCount": 0,
+      "updatedAt": "2024-01-24T14:40:33Z",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "topics": []
+    },
+    {
+      "name": "scAnt",
+      "description": "open-source 3D scanning and processing pipeline",
+      "url": "https://github.com/viktorpm/scAnt",
+      "stargazerCount": 0,
+      "forkCount": 0,
+      "updatedAt": "2023-09-20T12:23:46Z",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "topics": []
+    }
+  ]
+}
