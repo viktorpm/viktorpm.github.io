@@ -1,0 +1,10 @@
+---
+# Main Sass entry point for viktorpm.github.io
+# This file is processed by Jekyll and generates the final CSS
+---
+
+// Import the minima theme base styles
+@import "minima";
+
+// Import our custom styles that extend the theme
+@import "custom";

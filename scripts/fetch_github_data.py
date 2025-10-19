@@ -1,3 +1,21 @@
+#!/usr/bin/env python3
+"""
+GitHub Data Fetcher for viktorpm.github.io
+
+This script fetches user profile, organization, and repository data from GitHub
+using the GraphQL API. It generates JSON data files used by the Jekyll site to
+display dynamic content.
+
+Requirements:
+- GitHub Personal Access Token with scopes: read:user, read:org, repo
+- Python 3.6+
+
+Usage:
+    python3 scripts/fetch_github_data.py
+
+The script will prompt for the GitHub token interactively for security.
+"""
+
 import json, os, sys, datetime, textwrap
 import urllib.request
 import urllib.error

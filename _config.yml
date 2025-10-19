@@ -1,19 +1,33 @@
-# Jekyll configuration file
-# Add your Jekyll configuration here
+# Jekyll configuration for viktorpm.github.io
+# Personal GitHub Pages site using Jekyll with minima theme
+
+# Site metadata
 title: "Viktor Plattner"
 description: "Neuroscientist • Data/Systems • Lab Infrastructure"
+url: "https://viktorpm.github.io"
+
+# Jekyll settings
 theme: minima
 markdown: kramdown
-plugins: []
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Author information
 author:
   name: "Viktor Plattner"
   email: ""
+
+# Minima theme configuration
 minima:
   social_links:
-    - { platform: github, user_url: "https://github.com/viktorpm" }
-    - { platform: linkedin, user_url: "https://www.linkedin.com/in/" }
-    # add more if you want
+    github: "https://github.com/viktorpm"
+    linkedin: "https://www.linkedin.com/in/"
+
+# Default layouts for all pages
 defaults:
-  - scope: { path: "" }
+  - scope:
+      path: ""
     values:
       layout: "page"
