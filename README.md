@@ -25,7 +25,7 @@ viktorpm.github.io/
 
 ```mermaid
 graph TD
-    A[GitHub GraphQL API] -->|Daily/Auto| B[fetch_github_data.py]
+    A[GitHub GraphQL API] -->|Manual| B[fetch_github_data.py]
     B --> C[_data/profile.json]
     B --> D[_data/orgs.json]
     B --> E[_data/repos.json]
@@ -49,7 +49,7 @@ graph TD
 
 #### Data Layer
 - **Python Script**: `scripts/fetch_github_data.py`
-  - Automatic token detection (CI vs local modes)
+  - Interactive token prompting for local development
   - Graceful error handling for insufficient API scopes
   - Generates structured JSON data for Jekyll consumption
 
@@ -72,21 +72,28 @@ markdown: kramdown
 
 **`Gemfile`** - Ruby dependencies
 ```ruby
-# github-pages gem for GitHub Pages compatibility
-# webrick for Ruby 3+ support
+# Gemfile for viktorpm.github.io
+# Ensures compatibility with GitHub Pages hosting
+
+source "https://rubygems.org"
+gem "github-pages", group: :jekyll_plugins
+gem "webrick", "~> 1.7"
 ```
 
 ### Theme Architecture
 
 **Built-in Theme Styling** - Uses jekyll-theme-primer components
 ```html
-<!-- GitHub-style components -->
+<!-- GitHub-style components from actual index.md -->
 <div class="container-lg px-3 my-5">
-<span class="IssueLabel">tag</span>
-<span class="Label Label--success">Verified</span>
+<div class="d-flex flex-items-center">
+  <img class="mr-3" src="..." alt="org" width="32" height="32">
+  <span class="Label Label--success">Verified</span>
+</div>
+<span class="IssueLabel mr-1">tag</span>
 ```
 
-- Uses only GitHub's Primer theme classes
+- Uses only GitHub's Primer theme classes from the actual implementation
 - No custom CSS or SCSS files
 - Automatic responsive design and GitHub styling
 
@@ -108,12 +115,19 @@ Generated data files:
 
 ### Content Structure
 
-**`index.md`** - Main page template
+**`index.md`** - Main page template (actual structure)
 ```liquid
-<!-- Hero section with profile display -->
-<!-- Organizations grid -->
-<!-- Featured projects grid -->
-<!-- Recently updated list -->
+---
+layout: default
+title: "Home"
+---
+
+<div class="container-lg px-3 my-5">
+<!-- Profile avatar and name -->
+<!-- Organizations section with d-flex layout -->
+<!-- Featured Projects with repo cards -->
+<!-- Recently Updated repos -->
+</div>
 ```
 
 ### Content Updates
@@ -128,7 +142,6 @@ python3 scripts/fetch_github_data.py
 ### 🔐 Security
 - Interactive token prompting (no hardcoded secrets)
 - Proper `.gitignore` for sensitive files
-- Repository secrets for CI/CD
 
 ### 🎨 Design
 - Clean, professional aesthetic
@@ -137,20 +150,18 @@ python3 scripts/fetch_github_data.py
 - Consistent typography and spacing
 
 ### 🛠️ Maintainability
-- No fragile theme overrides or `!important` hacks
+- No custom CSS files or theme overrides
 - Well-documented code with clear section headers
-- Proper Jekyll asset pipeline usage
-- Modular SCSS architecture
+- Clean HTML structure using theme classes only
 
 ### ⚡ Performance
 - Static site generation for fast loading
-- Optimized CSS with proper imports
+- Built-in theme CSS (no additional imports needed)
 - GitHub Pages native hosting
 
-### 🔄 Automation
-- Daily content updates via GitHub Actions
-- Manual deployment triggers
-- Automated dependency management
+### 🔄 Content Updates
+- Manual data fetching via Python script
+- Automatic GitHub Pages deployment on push
 
 ## Setup & Usage
 
