@@ -1,15 +1,6 @@
-# Jekyll configuration for viktorpm.github.io
-# Simple GitHub Pages setup
-
 title: "Viktor Plattner"
 description: "Neuroscientist • Data/Systems • Lab Infrastructure"
-url: "https://viktorpm.github.io"
-
-# Use GitHub Pages compatible theme
-theme: jekyll-theme-minimal
-
-# Author information
+theme: minima
+markdown: kramdown
 author:
   name: "Viktor Plattner"
-
-# Minimal configuration - let the theme handle styling

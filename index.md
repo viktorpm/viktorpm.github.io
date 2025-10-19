@@ -1,22 +1,7 @@
 ---
-layout: default
+layout: page
 title: "Home"
 ---
-
-<style>
-.wrapper { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
-.hero { display: flex; gap: 2rem; align-items: center; margin: 2rem 0; padding: 2rem; border: 1px solid #e1e4e8; border-radius: 6px; background: #f6f8fa; }
-.hero img { width: 80px; height: 80px; border-radius: 50%; }
-.org-grid, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0; }
-.card { padding: 1rem; border: 1px solid #e1e4e8; border-radius: 6px; background: white; text-decoration: none; color: inherit; }
-.card:hover { border-color: #0366d6; }
-.card h3 { margin-top: 0; }
-.list-item { padding: 1rem; border-bottom: 1px solid #e1e4e8; }
-.list-item:last-child { border-bottom: none; }
-.tag { display: inline-block; background: #f1f8ff; color: #0366d6; padding: 0.2rem 0.5rem; margin: 0.2rem; border-radius: 3px; font-size: 0.85rem; }
-</style>
-
-<div class="wrapper">
   <!-- HERO -->
   <div class="hero">
     <img class="avatar" src="{{ site.data.profile.avatarUrl }}" alt="avatar">
@@ -88,4 +73,3 @@ title: "Home"
     {% endfor %}
     </div>
   </section>
-</div>
