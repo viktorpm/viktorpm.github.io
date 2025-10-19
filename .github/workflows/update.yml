@@ -1,0 +1,39 @@
+name: Update GitHub Data
+
+on:
+  schedule:
+    # Run daily at 12:00 UTC
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # Add your Python dependencies here
+    
+    - name: Run data fetch script
+      run: |
+        python scripts/fetch_github_data.py
+      env:
+        # Add your environment variables here
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add _data/
+        git diff --staged --quiet || git commit -m "Update GitHub data [skip ci]"
+        git push
