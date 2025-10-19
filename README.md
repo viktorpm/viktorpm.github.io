@@ -4,21 +4,18 @@ A personal GitHub Pages site built with Jekyll that dynamically displays GitHub 
 
 ## Architecture Overview
 
-This repository implements a clean, maintainable Jekyll site architecture with the following key components:
+This repository uses a simplified, robust architecture built on GitHub Pages native themes and minimal customizations:
 
-> **Note**: This architecture avoids fragile theme overrides and uses proper Jekyll extension mechanisms to ensure long-term maintainability and compatibility with theme updates.
+> **Note**: This simplified approach uses `jekyll-theme-minimal` with inline styling to ensure maximum compatibility and reliability on GitHub Pages.
 
 ```
 viktorpm.github.io/
-├── 📁 Assets & Styling
-│   ├── assets/css/main.scss     # Main Sass entry point
-│   └── _sass/_custom.scss       # Custom styles extending minima theme
 ├── 📁 Data Pipeline
-│   ├── scripts/fetch_github_data.py  # GitHub API data fetcher
+│   ├── scripts/fetch_github_data.py  # GitHub API data fetcher (CI + local modes)
 │   └── _data/                   # Generated JSON data files
 ├── 📁 Jekyll Core
-│   ├── _config.yml              # Site configuration
-│   ├── index.md                 # Main page content
+│   ├── _config.yml              # Site configuration (minimal theme)
+│   ├── index.md                 # Main page content (with inline styles)
 │   └── Gemfile                  # Ruby dependencies
 └── 📁 Automation
     └── .github/workflows/update.yml  # CI/CD pipeline
@@ -47,20 +44,20 @@ graph TD
 
 ### 2. Component Architecture
 
-#### Frontend (Jekyll + Minima Theme)
-- **Base Theme**: Minima (Jekyll's default theme)
-- **Custom Styling**: Extends minima via proper SCSS imports
+#### Frontend (Jekyll + Minimal Theme)
+- **Base Theme**: `jekyll-theme-minimal` (GitHub Pages native)
+- **Custom Styling**: Inline CSS for reliability and simplicity
 - **Layout**: Single-page design with hero section and organized content blocks
 
 #### Data Layer
 - **Python Script**: `scripts/fetch_github_data.py`
-  - Interactively prompts for GitHub token (security)
+  - Automatic token detection (CI vs local modes)
   - Graceful error handling for insufficient API scopes
   - Generates structured JSON data for Jekyll consumption
 
 #### Build System
-- **Jekyll**: Static site generator
-- **SCSS Pipeline**: Proper asset compilation through `main.scss`
+- **Jekyll**: Static site generator with minimal theme
+- **No Custom CSS Pipeline**: Uses inline styles for maximum compatibility
 - **GitHub Actions**: Automated build and deployment
 
 ## File Structure & Responsibilities

@@ -24,16 +24,22 @@ import getpass
 GQL_ENDPOINT = "https://api.github.com/graphql"
 USER_LOGIN = os.environ.get("GH_USER", "viktorpm")
 
-# Always prompt for token interactively (ignore environment variable)
-print("Please enter your GitHub personal access token.")
-print("Required permissions: read:user, read:org")
-TOKEN = getpass.getpass("GitHub Token: ").strip()
+# Get token from environment variable (CI) or prompt interactively (local)
+TOKEN = os.environ.get("GH_TOKEN")
 if not TOKEN:
-    print("No token provided. Exiting.", file=sys.stderr)
-    sys.exit(1)
+    # Interactive mode for local development
+    print("Please enter your GitHub personal access token.")
+    print("Required permissions: read:user, read:org")
+    TOKEN = getpass.getpass("GitHub Token: ").strip()
+    if not TOKEN:
+        print("No token provided. Exiting.", file=sys.stderr)
+        sys.exit(1)
+else:
+    # CI mode - token from environment
+    print("Using GitHub token from environment (CI mode)")
 
-# Allow interactive username input if using default
-if USER_LOGIN == "viktorpm" and not os.environ.get("GH_USER"):
+# Allow interactive username input only in local development
+if not os.environ.get("GH_TOKEN") and USER_LOGIN == "viktorpm" and not os.environ.get("GH_USER"):
     username_input = input("GitHub username (default: viktorpm): ").strip()
     if username_input:
         USER_LOGIN = username_input
