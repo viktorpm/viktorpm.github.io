@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "name": "SainsburyWellcomeCentre",
+    "login": "SainsburyWellcomeCentre",
+    "description": "",
+    "url": "https://github.com/SainsburyWellcomeCentre",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/13151977?v=4",
+    "isVerified": false
+  },
+  {
+    "name": "BrainGlobe",
+    "login": "brainglobe",
+    "description": "Interoperable Python-based tools for computational neuroanatomy",
+    "url": "https://github.com/brainglobe",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/64580400?v=4",
+    "isVerified": false
+  },
+  {
+    "name": "SWC/GCNU Neuroinformatics Unit",
+    "login": "neuroinformatics-unit",
+    "description": "Neuroscience & ML Research Software Engineering Group",
+    "url": "https://github.com/neuroinformatics-unit",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/107683407?v=4",
+    "isVerified": false
+  },
+  {
+    "name": "LIMLabSWC",
+    "login": "LIMLabSWC",
+    "description": "Welcome to the LIMLabSWC GitHub organization! This is where we manage our project codes, documentation, and other resources requiring version control.",
+    "url": "https://github.com/LIMLabSWC",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/169274099?v=4",
+    "isVerified": false
+  }
+]
