@@ -3,10 +3,18 @@
 
 @import "minima";
 
+// ============================================================================
+// Layout & Base Styles
+// ============================================================================
+
 .page-content {
   max-width: 800px;
   margin: 0 auto;
 }
+
+// ============================================================================
+// Hero Section
+// ============================================================================
 
 .hero {
   display: flex;
@@ -25,6 +33,10 @@
   border-radius: 50%;
 }
 
+// ============================================================================
+// Grid Layouts
+// ============================================================================
+
 .org-grid, .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -40,26 +52,66 @@
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease;
+  
+  &:hover {
+    border-color: #0366d6;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  h3 {
+    margin-top: 0;
+    color: #24292e;
+  }
 }
 
-.card:hover {
-  border-color: #0366d6;
-  text-decoration: none;
-  color: inherit;
+// ============================================================================
+// Card Components
+// ============================================================================
+
+// Organization specific styles
+.org-card {
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    float: left;
+    margin-right: 1rem;
+  }
+  
+  .org-content {
+    overflow: hidden;
+    
+    h3 {
+      margin-top: 0;
+    }
+    
+    .org-description {
+      color: #666;
+      margin-bottom: 0;
+    }
+  }
 }
 
-.card h3 {
-  margin-top: 0;
-  color: #24292e;
+.verified-badge {
+  background: #28a745;
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
 }
+
+// ============================================================================
+// List and Badge Components
+// ============================================================================
 
 .list-item {
   padding: 1.25rem;
   border-bottom: 1px solid #e1e4e8;
-}
-
-.list-item:last-child {
-  border-bottom: none;
+  
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .tag {

@@ -66,8 +66,10 @@
       "url": "https://github.com/viktorpm/viktorpm.github.io",
       "stargazerCount": 0,
       "forkCount": 0,
-      "updatedAt": "2025-10-19T11:21:00Z",
-      "primaryLanguage": null,
+      "updatedAt": "2025-10-19T12:52:37Z",
+      "primaryLanguage": {
+        "name": "Python"
+      },
       "topics": []
     },
     {

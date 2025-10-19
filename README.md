@@ -6,7 +6,7 @@ A personal GitHub Pages site built with Jekyll that dynamically displays GitHub 
 
 This repository uses a simplified, robust architecture built on GitHub Pages native themes and minimal customizations:
 
-> **Note**: This simplified approach uses `jekyll-theme-minimal` with inline styling to ensure maximum compatibility and reliability on GitHub Pages.
+> **Note**: This simplified approach uses Jekyll's `minima` theme with proper SCSS styling for maintainability and reliability.
 
 ```
 viktorpm.github.io/
@@ -14,11 +14,12 @@ viktorpm.github.io/
 │   ├── scripts/fetch_github_data.py  # GitHub API data fetcher (CI + local modes)
 │   └── _data/                   # Generated JSON data files
 ├── 📁 Jekyll Core
-│   ├── _config.yml              # Site configuration (minimal theme)
-│   ├── index.md                 # Main page content (with inline styles)
+│   ├── _config.yml              # Site configuration (minima theme)
+│   ├── index.md                 # Main page content (clean HTML + CSS classes)
+│   ├── assets/css/style.scss    # Custom SCSS styles
 │   └── Gemfile                  # Ruby dependencies
-└── 📁 Automation
-    └── .github/workflows/update.yml  # CI/CD pipeline
+└── 📁 Data
+    └── _data/                   # Generated JSON data files
 ```
 
 ## How It Works
@@ -44,9 +45,9 @@ graph TD
 
 ### 2. Component Architecture
 
-#### Frontend (Jekyll + Minimal Theme)
-- **Base Theme**: `jekyll-theme-minimal` (GitHub Pages native)
-- **Custom Styling**: Inline CSS for reliability and simplicity
+#### Frontend (Jekyll + Minima Theme)
+- **Base Theme**: `minima` (Jekyll's default theme)
+- **Custom Styling**: Clean SCSS organized in `assets/css/style.scss`
 - **Layout**: Single-page design with hero section and organized content blocks
 
 #### Data Layer
@@ -56,9 +57,9 @@ graph TD
   - Generates structured JSON data for Jekyll consumption
 
 #### Build System
-- **Jekyll**: Static site generator with minimal theme
-- **No Custom CSS Pipeline**: Uses inline styles for maximum compatibility
-- **GitHub Actions**: Automated build and deployment
+- **Jekyll**: Static site generator with minima theme
+- **SCSS Pipeline**: Clean, maintainable stylesheets
+- **GitHub Pages**: Automatic build and deployment
 
 ## File Structure & Responsibilities
 
@@ -66,9 +67,10 @@ graph TD
 
 **`_config.yml`** - Jekyll site configuration
 ```yaml
-# Site metadata and Jekyll settings
-# Minima theme configuration
-# Plugin setup (jekyll-feed, jekyll-sitemap)
+title: "Viktor Plattner"
+description: "Neuroscientist • Data/Systems • Lab Infrastructure"
+theme: minima
+markdown: kramdown
 ```
 
 **`Gemfile`** - Ruby dependencies
@@ -79,16 +81,19 @@ graph TD
 
 ### Styling Architecture
 
-**`assets/css/main.scss`** - Main CSS entry point
+**`assets/css/style.scss`** - Custom styles extending minima
 ```scss
-@import "minima";        // Base theme
-@import "custom";        // Our custom styles
+@import "minima";
+
+// Custom component styles
+.hero { /* styles */ }
+.card { /* styles */ }
+.org-grid, .project-grid { /* styles */ }
 ```
 
-**`_sass/_custom.scss`** - Custom styles extending minima
-- Clean, maintainable CSS without `!important` overrides
-- Proper section organization with documentation
-- Dark mode and responsive design support
+- Clean, maintainable SCSS without inline styles
+- Proper semantic CSS classes for all components
+- Organized structure with nested selectors
 
 ### Data Pipeline
 
@@ -116,15 +121,11 @@ Generated data files:
 <!-- Recently updated list -->
 ```
 
-### Automation
+### Content Updates
 
-**`.github/workflows/update.yml`** - CI/CD pipeline
-```yaml
-# Triggers: push, manual, daily schedule
-# Steps:
-#   1. Fetch fresh GitHub data
-#   2. Build Jekyll site
-#   3. Deploy to GitHub Pages
+Data updates can be triggered by running the Python script manually:
+```bash
+python3 scripts/fetch_github_data.py
 ```
 
 ## Key Features
@@ -181,21 +182,16 @@ Generated data files:
 
 ### Production Deployment
 
-The site automatically deploys to GitHub Pages via GitHub Actions when:
-- Code is pushed to the `main` branch
-- Workflow is manually triggered
-- Daily schedule runs (3:17 UTC)
+The site automatically deploys to GitHub Pages when you push changes to the repository.
 
 ### Required Setup
 
-1. **GitHub Repository Secret**: 
-   - Go to repo Settings → Secrets and variables → Actions
-   - Add `GH_TOKEN` with a GitHub Personal Access Token
-   - Required scopes: `read:user`, `read:org`, `repo`
-
-2. **GitHub Pages**: 
+1. **GitHub Pages**: 
    - Enable Pages in repository settings
-   - Select "GitHub Actions" as source
+   - Select source branch (typically `main`)
+
+2. **For Manual Data Updates**: 
+   - You can run the data fetching script locally and commit the updated JSON files
 
 ## Maintenance Guide
 
@@ -203,12 +199,12 @@ The site automatically deploys to GitHub Pages via GitHub Actions when:
 1. Update `fetch_github_data.py` with new GraphQL query
 2. Add corresponding JSON data structure
 3. Update `index.md` template to display new data
-4. Add styles in `_sass/_custom.scss` if needed
+4. Add styles in `assets/css/style.scss` if needed
 
 ### Styling Changes
-- Edit `_sass/_custom.scss` for custom styles
-- Follow existing section organization
-- Test in both light and dark modes
+- Edit `assets/css/style.scss` for custom styles
+- Follow existing section organization with nested SCSS
+- Test responsive design and maintain clean structure
 
 ### Updating Dependencies
 - Modify `Gemfile` for Ruby gems
@@ -222,16 +218,16 @@ The site automatically deploys to GitHub Pages via GitHub Actions when:
 - **SCSS**: CSS preprocessing
 - **Python**: GitHub API data fetching
 - **GitHub GraphQL API**: Data source
-- **GitHub Actions**: CI/CD automation
-- **GitHub Pages**: Hosting platform
+- **GitHub Pages**: Automated hosting and deployment
 
 ## Repository Status
 
 The repository is currently in a clean, maintainable state:
 
-- ✅ **No leftover files**: Removed duplicate CSS files and fragile overrides
-- ✅ **Proper SCSS architecture**: Uses `_sass/_custom.scss` with `main.scss` entry point
-- ✅ **Clean includes**: No custom template overrides in `_includes/` or `_layouts/`
+- ✅ **No leftover files**: Clean structure with only necessary files
+- ✅ **Proper SCSS architecture**: All styles consolidated in `assets/css/style.scss`
+- ✅ **No inline styles**: All styling moved to proper CSS classes
+- ✅ **Clean HTML**: Semantic structure without mixed styling approaches
 - ✅ **Well-documented**: All files have clear headers and comments
 - ✅ **Security**: Interactive token prompting, proper `.gitignore`
 
