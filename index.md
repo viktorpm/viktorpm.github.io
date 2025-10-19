@@ -1,75 +1,68 @@
 ---
-layout: page
+layout: default
 title: "Home"
 ---
-  <!-- HERO -->
-  <div class="hero">
-    <img class="avatar" src="{{ site.data.profile.avatarUrl }}" alt="avatar">
-    <div>
-      <h1>{{ site.data.profile.name | default: site.data.profile.login }}</h1>
-      {% if site.data.profile.bio %}<p class="muted">{{ site.data.profile.bio }}</p>{% endif %}
-      <p class="muted">
-        {% if site.data.profile.company %}{{ site.data.profile.company }} · {% endif %}
-        {% if site.data.profile.location %}{{ site.data.profile.location }}{% endif %}
-        {% if site.data.profile.websiteUrl %} · <a href="{{ site.data.profile.websiteUrl }}">website</a>{% endif %}
-      </p>
+
+<div class="container-lg px-3 my-5">
+
+{% if site.data.profile.avatarUrl %}
+<div class="text-center mb-4">
+  <img class="circle" src="{{ site.data.profile.avatarUrl }}" alt="Avatar" width="120" height="120">
+  <h1 class="text-center">{{ site.data.profile.name | default: site.data.profile.login }}</h1>
+  {% if site.data.profile.bio %}<p class="text-center text-gray mb-4">{{ site.data.profile.bio }}</p>{% endif %}
+</div>
+{% endif %}
+
+<h2 class="border-bottom pb-2">Organizations</h2>
+<div class="gutter-sm">
+{% for org in site.data.orgs %}
+<div class="py-2 border-bottom">
+  <div class="d-flex flex-items-center">
+    {% if org.avatarUrl %}<img class="mr-3" src="{{ org.avatarUrl }}" alt="{{ org.login }}" width="32" height="32">{% endif %}
+    <div class="flex-auto">
+      <h3 class="mb-1"><a href="{{ org.url }}">{{ org.name | default: org.login }}</a></h3>
+      {% if org.description %}<p class="text-gray text-small mb-1">{{ org.description }}</p>{% endif %}
+      {% if org.isVerified %}<span class="Label Label--success">Verified</span>{% endif %}
     </div>
   </div>
+</div>
+{% endfor %}
+</div>
 
-  <section>
-    <h2>Organizations</h2>
-    <div class="org-grid">
-    {% for org in site.data.orgs %}
-      <a class="card org-card" href="{{ org.url }}">
-        {% if org.avatarUrl %}<img src="{{ org.avatarUrl }}" alt="{{ org.login }}">{% endif %}
-        <div class="org-content">
-          <h3>{{ org.name | default: org.login }}</h3>
-          {% if org.isVerified %}<span class="verified-badge">✓ Verified</span>{% endif %}
-          {% if org.description %}<p class="org-description">{{ org.description }}</p>{% endif %}
-        </div>
-      </a>
-    {% endfor %}
+<h2 class="border-bottom pb-2 mt-4">Featured Projects</h2>
+<div class="gutter-sm">
+{% for repo in site.data.repos.pinned %}
+<div class="py-2 border-bottom">
+  <h3 class="mb-1"><a href="{{ repo.url }}">{{ repo.name }}</a></h3>
+  {% if repo.description %}<p class="text-gray mb-2">{{ repo.description }}</p>{% endif %}
+  <div class="text-small text-gray">
+    ⭐ {{ repo.stargazerCount }}{% if repo.primaryLanguage %} · {{ repo.primaryLanguage.name }}{% endif %}
+  </div>
+  {% if repo.topics and repo.topics.size > 0 %}
+    <div class="mt-2">
+      {% for t in repo.topics %}<span class="IssueLabel mr-1">{{ t }}</span>{% endfor %}
     </div>
-  </section>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
 
-  <section>
-    <h2>Featured Projects</h2>
-    <div class="project-grid">
-    {% for repo in site.data.repos.pinned %}
-      <a class="card" href="{{ repo.url }}">
-        <h3>{{ repo.name }}</h3>
-        {% if repo.description %}<p class="muted">{{ repo.description }}</p>{% endif %}
-        <p class="tiny muted">
-          ⭐ {{ repo.stargazerCount }}{% if repo.primaryLanguage %} · {{ repo.primaryLanguage.name }}{% endif %}
-        </p>
-        {% if repo.topics and repo.topics.size > 0 %}
-          <p class="tags">
-            {% for t in repo.topics %}<span class="tag">{{ t }}</span>{% endfor %}
-          </p>
-        {% endif %}
-      </a>
-    {% endfor %}
+<h2 class="border-bottom pb-2 mt-4">Recently Updated</h2>
+<div class="gutter-sm">
+{% for repo in site.data.repos.recent %}
+<div class="py-2 border-bottom">
+  <h3 class="mb-1"><a href="{{ repo.url }}">{{ repo.name }}</a></h3>
+  {% if repo.description %}<p class="text-gray mb-2">{{ repo.description }}</p>{% endif %}
+  <div class="text-small text-gray">
+    Updated {{ repo.updatedAt | date: "%Y-%m-%d" }} · ⭐ {{ repo.stargazerCount }}{% if repo.primaryLanguage %} · {{ repo.primaryLanguage.name }}{% endif %}
+  </div>
+  {% if repo.topics and repo.topics.size > 0 %}
+    <div class="mt-2">
+      {% for t in repo.topics %}<span class="IssueLabel mr-1">{{ t }}</span>{% endfor %}
     </div>
-  </section>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
 
-  <section>
-    <h2>Recently Updated</h2>
-    <div class="list">
-    {% for repo in site.data.repos.recent %}
-      <div class="list-item">
-        <div>
-          <a href="{{ repo.url }}"><strong>{{ repo.name }}</strong></a>
-          {% if repo.description %}<div class="muted">{{ repo.description }}</div>{% endif %}
-          <div class="tiny muted">
-            Updated {{ repo.updatedAt | date: "%Y-%m-%d" }} · ⭐ {{ repo.stargazerCount }}{% if repo.primaryLanguage %} · {{ repo.primaryLanguage.name }}{% endif %}
-          </div>
-          {% if repo.topics and repo.topics.size > 0 %}
-            <p class="tags">
-              {% for t in repo.topics %}<span class="tag">{{ t }}</span>{% endfor %}
-            </p>
-          {% endif %}
-        </div>
-      </div>
-    {% endfor %}
-    </div>
-  </section>
+</div>
