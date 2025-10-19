@@ -4,22 +4,19 @@ A personal GitHub Pages site built with Jekyll that dynamically displays GitHub 
 
 ## Architecture Overview
 
-This repository uses a simplified, robust architecture built on GitHub Pages native themes and minimal customizations:
+This repository uses a completely prebuilt theme approach with zero custom styling:
 
-> **Note**: This simplified approach uses Jekyll's `minima` theme with proper SCSS styling for maintainability and reliability.
+> **Note**: Uses GitHub's `jekyll-theme-primer` theme with no custom CSS. All styling comes from the built-in theme.
 
 ```
 viktorpm.github.io/
 ├── 📁 Data Pipeline
-│   ├── scripts/fetch_github_data.py  # GitHub API data fetcher (CI + local modes)
+│   ├── scripts/fetch_github_data.py  # GitHub API data fetcher
 │   └── _data/                   # Generated JSON data files
-├── 📁 Jekyll Core
-│   ├── _config.yml              # Site configuration (minima theme)
-│   ├── index.md                 # Main page content (clean HTML + CSS classes)
-│   ├── assets/css/style.scss    # Custom SCSS styles
-│   └── Gemfile                  # Ruby dependencies
-└── 📁 Data
-    └── _data/                   # Generated JSON data files
+└── 📁 Jekyll Core
+    ├── _config.yml              # Site configuration (jekyll-theme-primer)
+    ├── index.md                 # Main page content (Theme-native HTML)
+    └── Gemfile                  # Ruby dependencies
 ```
 
 ## How It Works
@@ -45,10 +42,10 @@ graph TD
 
 ### 2. Component Architecture
 
-#### Frontend (Jekyll + Minima Theme)
-- **Base Theme**: `minima` (Jekyll's default theme)
-- **Custom Styling**: Clean SCSS organized in `assets/css/style.scss`
-- **Layout**: Single-page design with hero section and organized content blocks
+#### Frontend (Jekyll + Primer Theme)
+- **Base Theme**: `jekyll-theme-primer` (GitHub's official theme)
+- **No Custom Styling**: Uses only built-in theme classes and components
+- **Layout**: Single-page design with GitHub-style components
 
 #### Data Layer
 - **Python Script**: `scripts/fetch_github_data.py`
@@ -57,8 +54,8 @@ graph TD
   - Generates structured JSON data for Jekyll consumption
 
 #### Build System
-- **Jekyll**: Static site generator with minima theme
-- **SCSS Pipeline**: Clean, maintainable stylesheets
+- **Jekyll**: Static site generator with Primer theme
+- **No Custom Assets**: All styling from theme
 - **GitHub Pages**: Automatic build and deployment
 
 ## File Structure & Responsibilities
@@ -69,7 +66,7 @@ graph TD
 ```yaml
 title: "Viktor Plattner"
 description: "Neuroscientist • Data/Systems • Lab Infrastructure"
-theme: minima
+theme: jekyll-theme-primer
 markdown: kramdown
 ```
 
@@ -79,21 +76,19 @@ markdown: kramdown
 # webrick for Ruby 3+ support
 ```
 
-### Styling Architecture
+### Theme Architecture
 
-**`assets/css/style.scss`** - Custom styles extending minima
-```scss
-@import "minima";
-
-// Custom component styles
-.hero { /* styles */ }
-.card { /* styles */ }
-.org-grid, .project-grid { /* styles */ }
+**Built-in Theme Styling** - Uses jekyll-theme-primer components
+```html
+<!-- GitHub-style components -->
+<div class="container-lg px-3 my-5">
+<span class="IssueLabel">tag</span>
+<span class="Label Label--success">Verified</span>
 ```
 
-- Clean, maintainable SCSS without inline styles
-- Proper semantic CSS classes for all components
-- Organized structure with nested selectors
+- Uses only GitHub's Primer theme classes
+- No custom CSS or SCSS files
+- Automatic responsive design and GitHub styling
 
 ### Data Pipeline
 
@@ -198,13 +193,12 @@ The site automatically deploys to GitHub Pages when you push changes to the repo
 ### Adding New Content Types
 1. Update `fetch_github_data.py` with new GraphQL query
 2. Add corresponding JSON data structure
-3. Update `index.md` template to display new data
-4. Add styles in `assets/css/style.scss` if needed
+3. Update `index.md` template to display new data using Primer theme classes
 
 ### Styling Changes
-- Edit `assets/css/style.scss` for custom styles
-- Follow existing section organization with nested SCSS
-- Test responsive design and maintain clean structure
+- Use GitHub's Primer theme utility classes (no custom CSS)
+- Reference Primer documentation for available components
+- Maintain clean HTML structure with theme classes
 
 ### Updating Dependencies
 - Modify `Gemfile` for Ruby gems
@@ -214,8 +208,7 @@ The site automatically deploys to GitHub Pages when you push changes to the repo
 ## Technology Stack
 
 - **Jekyll**: Static site generator
-- **Minima Theme**: Jekyll's default theme (extended)
-- **SCSS**: CSS preprocessing
+- **Primer Theme**: GitHub's official theme (no custom CSS)
 - **Python**: GitHub API data fetching
 - **GitHub GraphQL API**: Data source
 - **GitHub Pages**: Automated hosting and deployment
@@ -225,9 +218,9 @@ The site automatically deploys to GitHub Pages when you push changes to the repo
 The repository is currently in a clean, maintainable state:
 
 - ✅ **No leftover files**: Clean structure with only necessary files
-- ✅ **Proper SCSS architecture**: All styles consolidated in `assets/css/style.scss`
-- ✅ **No inline styles**: All styling moved to proper CSS classes
-- ✅ **Clean HTML**: Semantic structure without mixed styling approaches
+- ✅ **Zero custom CSS**: Uses only built-in Primer theme styling
+- ✅ **Theme-native HTML**: Uses proper GitHub theme components
+- ✅ **Clean structure**: No empty directories or unused files
 - ✅ **Well-documented**: All files have clear headers and comments
 - ✅ **Security**: Interactive token prompting, proper `.gitignore`
 
