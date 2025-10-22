@@ -1,6 +1,6 @@
 # viktorpm.github.io
 
-Personal site powered by Jekyll and the Minimal Mistakes theme, deployed on GitHub Pages. Dynamic content (profile, organizations, repositories) is sourced from the GitHub GraphQL API and stored in Jekyll `_data` files.
+Personal site powered by Jekyll and the Minima theme, deployed on GitHub Pages. Dynamic content (profile, organizations, repositories) is sourced from the GitHub GraphQL API and stored in Jekyll `_data` files.
 
 ## What is Jekyll?
 
@@ -11,13 +11,13 @@ Key concepts:
 - **Layouts/Includes**: Provided by the theme; you reference them via front matter.
 - **Data files**: YAML/JSON/CSV in `_data/`, available as `site.data.*` in templates.
 
-## What is Minimal Mistakes?
+## What is Minima?
 
-[Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/) is a popular Jekyll theme that provides layouts, components, and sensible defaults. This site uses the `home` layout for the landing page, plus `single` for interior pages.
+[Minima](https://github.com/jekyll/minima) is Jekyll's default theme that provides clean layouts, navigation, and sensible defaults. This site uses the `page` layout for all pages with built-in navigation.
 
 Configured via:
-- `Gemfile`: adds the theme and required plugins
-- `_config.yml`: sets `remote_theme`, plugins, site metadata
+- `_config.yml`: sets the theme and site metadata
+- No additional gems required (GitHub Pages supported)
 
 ## How the GitHub data integration works
 
@@ -38,9 +38,9 @@ graph LR
 
 ## Repository layout
 
-- `_config.yml` — Jekyll configuration (theme, plugins, site metadata)
-- `_data/` — Data used in templates (`navigation.yml`, `profile.json`, `orgs.json`, `repos.json`)
-- `index.md` — Home/About landing page (Minimal Mistakes `home` layout)
+- `_config.yml` — Jekyll configuration (theme, site metadata)
+- `_data/` — Data used in templates (`profile.json`, `orgs.json`, `repos.json`)
+- `index.md` — Home/About landing page (Minima `page` layout)
 - `projects.md` — Projects listing (uses `_data/repos.json`)
 - `organizations.md` — Organizations listing (uses `_data/orgs.json`)
 - `scripts/fetch_github_data.py` — Fetches GitHub data
@@ -70,7 +70,7 @@ Notes:
 ## Deployment (GitHub Pages)
 
 This repository is a GitHub Pages site. When you push to the default branch:
-- GitHub Pages builds the site with Jekyll and Minimal Mistakes
+- GitHub Pages builds the site with Jekyll and Minima theme
 - Output is served at `https://<username>.github.io/`
 
 No manual deployment is required. Ensure `_site/` and `vendor/` are not committed (they are in `.gitignore`).

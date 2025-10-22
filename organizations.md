@@ -1,7 +1,6 @@
 ---
-layout: single
+layout: page
 title: "Organizations"
-author_profile: true
 permalink: /organizations/
 ---
 

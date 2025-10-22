@@ -12,5 +12,4 @@ gem "github-pages", group: :jekyll_plugins
 gem "webrick", "~> 1.7"
 
 
-# theme
-gem "minimal-mistakes-jekyll"
+# GitHub Pages supported theme

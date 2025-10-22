@@ -1,9 +1,6 @@
 ---
-layout: home
+layout: page
 title: "About"
-author_profile: true
-classes: wide
-excerpt: "Neuroscientist • Data/Systems • Lab Infrastructure"
 ---
 
 ## Viktor Plattner
