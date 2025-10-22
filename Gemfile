@@ -10,3 +10,7 @@ gem "github-pages", group: :jekyll_plugins
 # Additional dependency required for Ruby 3+
 # Provides HTTP server functionality for Jekyll serve
 gem "webrick", "~> 1.7"
+
+
+# theme
+gem "minimal-mistakes-jekyll"

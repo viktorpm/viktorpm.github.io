@@ -1,0 +1,11 @@
+# Main navigation
+main:
+  - title: "Projects"
+    url: "/projects/"
+  - title: "Organizations"
+    url: "/organizations/"
+
+# Footer navigation
+footer:
+  - title: "GitHub"
+    url: "https://github.com/viktorpm"

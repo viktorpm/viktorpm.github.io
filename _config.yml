@@ -1,6 +1,7 @@
 title: "Viktor Plattner"
 description: "Neuroscientist • Data/Systems • Lab Infrastructure"
-theme: jekyll-theme-primer
+theme: minimal-mistakes-jekyll
+# theme: jekyll-theme-primer
 markdown: kramdown
 author:
   name: "Viktor Plattner"
