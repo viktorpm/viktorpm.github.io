@@ -246,14 +246,14 @@ def main():
         else:
             raise
 
-    with open("_data/profile.json", "w", encoding="utf-8") as f:
+    with open("_data/github_profile.json", "w", encoding="utf-8") as f:
         json.dump(profile, f, ensure_ascii=False, indent=2)
     with open("_data/orgs.json", "w", encoding="utf-8") as f:
         json.dump(orgs, f, ensure_ascii=False, indent=2)
     with open("_data/repos.json", "w", encoding="utf-8") as f:
         json.dump({"pinned": pinned, "recent": recent}, f, ensure_ascii=False, indent=2)
 
-    print("Wrote _data/profile.json, _data/orgs.json, _data/repos.json")
+    print("Wrote _data/github_profile.json, _data/orgs.json, _data/repos.json")
 
 if __name__ == "__main__":
     main()

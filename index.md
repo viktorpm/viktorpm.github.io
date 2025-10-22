@@ -1,12 +1,10 @@
 ---
 layout: page
-title: "About"
+title: "Viktor Plattner"
 ---
 
-## Viktor Plattner
-
-{% if site.data.profile.bio %}
-{{ site.data.profile.bio }}
+{% if site.data.github_profile.bio %}
+{{ site.data.github_profile.bio }}
 {% else %}
 Neuroscientist working on data systems and lab infrastructure. I focus on computational neuroanatomy, behavior analysis, and building tools for neuroscience research.
 {% endif %}
@@ -20,18 +18,13 @@ Neuroscientist working on data systems and lab infrastructure. I focus on comput
 
 ## Contact
 
-- **GitHub**: [{{ site.data.profile.login }}]({{ site.data.profile.url }})
-{% if site.data.profile.websiteUrl %}
-- **Website**: [{{ site.data.profile.websiteUrl }}]({{ site.data.profile.websiteUrl }})
+- **GitHub**: [{{ site.data.github_profile.login }}]({{ site.data.github_profile.url }})
+{% if site.data.github_profile.websiteUrl %}
+- **Website**: [{{ site.data.github_profile.websiteUrl }}]({{ site.data.github_profile.websiteUrl }})
 {% endif %}
-{% if site.data.profile.location %}
-- **Location**: {{ site.data.profile.location }}
+{% if site.data.github_profile.location %}
+- **Location**: {{ site.data.github_profile.location }}
 {% endif %}
-{% if site.data.profile.company %}
-- **Company**: {{ site.data.profile.company }}
+{% if site.data.github_profile.company %}
+- **Company**: {{ site.data.github_profile.company }}
 {% endif %}
-
-## Quick Links
-
-- **[Projects](/projects/)** - Featured repositories and recent work
-- **[Organizations](/organizations/)** - Research groups and collaborations

@@ -23,10 +23,10 @@ Configured via:
 
 1. `scripts/fetch_github_data.py` calls the GitHub GraphQL API.
 2. The script writes JSON to `_data/`:
-   - `_data/profile.json`
+   - `_data/github_profile.json`
    - `_data/orgs.json`
    - `_data/repos.json`
-3. Pages render that data with Liquid, e.g. `{{ site.data.profile.login }}`.
+3. Pages render that data with Liquid, e.g. `{{ site.data.github_profile.login }}`.
 
 ```mermaid
 graph LR
@@ -38,14 +38,14 @@ graph LR
 
 ## Repository layout
 
-- `_config.yml` — Jekyll configuration (theme, site metadata)
-- `_data/` — Data used in templates (`profile.json`, `orgs.json`, `repos.json`)
-- `index.md` — Home/About landing page (Minima `page` layout)
-- `projects.md` — Projects listing (uses `_data/repos.json`)
-- `organizations.md` — Organizations listing (uses `_data/orgs.json`)
-- `scripts/fetch_github_data.py` — Fetches GitHub data
-- `Gemfile`, `Gemfile.lock` — Ruby dependencies
-- `.gitignore` — Excludes `_site/`, `vendor/`, etc.
+- `_config.yml` — Jekyll configuration (theme, site metadata, footer content)
+- `_data/` — GitHub data files (`github_profile.json`, `orgs.json`, `repos.json`)
+- `index.md` — Home/About landing page (uses `site.data.github_profile.*`)
+- `projects.md` — Projects listing (uses `site.data.repos.*`)
+- `organizations.md` — Organizations listing (uses `site.data.orgs.*`)
+- `scripts/fetch_github_data.py` — Fetches GitHub data via GraphQL API
+- `Gemfile`, `Gemfile.lock` — Ruby dependencies for Jekyll
+- `.gitignore` — Excludes build artifacts (`_site/`, `vendor/`, etc.)
 
 ## Local development
 

@@ -1,6 +1,75 @@
-title: "Viktor Plattner"
-description: "Neuroscientist • Data/Systems • Lab Infrastructure"
-theme: minima
-markdown: kramdown
-author:
-  name: "Viktor Plattner"
+# ===========================================
+# SITE CONFIGURATION
+# ===========================================
+
+# Site identity
+title: "Introduction"                       # Site title (appears in footer heading)
+description: "Neuroscientist • Data/Systems • Lab Infrastructure"  # Site description (appears in footer)
+author: "Viktor Plattner"                  # Author name (appears in footer contact list)
+
+# Technical settings
+theme: minima                              # Jekyll theme
+markdown: kramdown                         # Markdown processor
+
+# ===========================================
+# SOCIAL LINKS (Footer)
+# ===========================================
+
+# GitHub (appears in footer social links)
+github_username: "viktorpm"                # Your GitHub username
+
+# Email (appears in footer contact list)
+# email: "your-email@example.com"          # Uncomment to add email
+
+# ===========================================
+# THEME CUSTOMIZATION
+# ===========================================
+
+# Navigation (Minima theme)
+# show_excerpts: true                       # Show post excerpts on home page
+# show_post_footer: true                    # Show post footer with date/tags
+
+# ===========================================
+# PLUGINS & EXTENSIONS
+# ===========================================
+
+# Jekyll plugins (GitHub Pages compatible)
+plugins:
+  - jekyll-feed                             # RSS feed
+  - jekyll-sitemap                          # Sitemap generation
+  - jekyll-seo-tag                          # SEO meta tags
+
+# ===========================================
+# SEO & META
+# ===========================================
+
+# SEO settings
+# twitter:
+#   username: "your-twitter"                # Twitter username for SEO
+#   card: "summary"                         # Twitter card type
+
+# ===========================================
+# BUILD SETTINGS
+# ===========================================
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - README.md
+  - scripts/
+
+# Include files in build
+include:
+  - _pages/
+
+# ===========================================
+# CUSTOM COLLECTIONS
+# ===========================================
+
+# Define custom collections (if needed)
+# collections:
+#   projects:
+#     output: true
+#     permalink: /:collection/:name/
