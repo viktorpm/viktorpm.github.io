@@ -93,3 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 .profile-image {
   border-color: var(--primary) !important;
 }
+
+.profile-image:hover {
+  transform: scale(1.05) !important;
+}
