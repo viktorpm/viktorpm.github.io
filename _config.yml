@@ -3,31 +3,33 @@
 # ===========================================
 
 # Site identity
-title: "Introduction"                       # Site title (appears in footer heading)
-description: "Neuroscientist • Data/Systems • Lab Infrastructure"  # Site description (appears in footer)
-author: "Viktor Plattner"                  # Author name (appears in footer contact list)
-
-# Technical settings
-theme: minima                              # Jekyll theme
-markdown: kramdown                         # Markdown processor
+title: "Viktor Plattner"                    # Site title (appears in header)
+description: "Neuroscientist • Data/Systems • Lab Infrastructure"  # Site description
+# url: "https://viktorpm.github.io"         # Your site URL (uncomment if needed)
+# baseurl: ""                               # Subdirectory path (if any)
 
 # ===========================================
-# SOCIAL LINKS (Footer)
+# TECHNICAL SETTINGS
 # ===========================================
 
-# GitHub (appears in footer social links)
-github_username: "viktorpm"                # Your GitHub username
-
-# Email (appears in footer contact list)
-# email: "your-email@example.com"          # Uncomment to add email
+# Core Jekyll settings
+theme: jekyll-theme-cayman                  # Theme name
+markdown: kramdown                          # Markdown processor
+highlighter: rouge                          # Code syntax highlighting
+# permalink: pretty                         # URL structure (pretty, date, etc.)
+# timezone: "Europe/London"                 # Site timezone
+# lang: "en"                                # Site language
 
 # ===========================================
-# THEME CUSTOMIZATION
+# CONTACT & SOCIAL
 # ===========================================
 
-# Navigation (Minima theme)
-# show_excerpts: true                       # Show post excerpts on home page
-# show_post_footer: true                    # Show post footer with date/tags
+# Contact information
+# email: "v.plattner@ucl.ac.uk"             # Your email address
+# github_username: "viktorpm"               # GitHub username
+# twitter_username: "your-twitter"         # Twitter handle
+# linkedin_username: "your-linkedin"       # LinkedIn username
+
 
 # ===========================================
 # PLUGINS & EXTENSIONS
@@ -35,18 +37,64 @@ github_username: "viktorpm"                # Your GitHub username
 
 # Jekyll plugins (GitHub Pages compatible)
 plugins:
-  - jekyll-feed                             # RSS feed
+  - jekyll-feed                             # RSS feed generation
   - jekyll-sitemap                          # Sitemap generation
   - jekyll-seo-tag                          # SEO meta tags
+  # - jekyll-optional-front-matter          # Optional front matter
+  # - jekyll-readme-index                   # README as index page
+  # - jekyll-default-layout                # Default layouts
+  # - jekyll-titles-from-headings           # Auto-generate titles
 
 # ===========================================
-# SEO & META
+# THEME CUSTOMIZATION
 # ===========================================
+
+# Cayman theme options
+# show_excerpts: true                       # Show post excerpts on home page
+# show_post_footer: true                    # Show post footers with date/tags
+
+# ===========================================
+# ANALYTICS & SEO
+# ===========================================
+
+# Analytics
+# google_analytics: "G-XXXXXXXXXX"          # Google Analytics ID
+# google_site_verification: "verification_code"  # Google Search Console
 
 # SEO settings
 # twitter:
 #   username: "your-twitter"                # Twitter username for SEO
 #   card: "summary"                         # Twitter card type
+
+# ===========================================
+# CONTENT SETTINGS
+# ===========================================
+
+# Collections (custom content types)
+# collections:
+#   projects:
+#     output: true
+#     permalink: /:collection/:name/
+#   talks:
+#     output: true
+#     permalink: /:collection/:name/
+
+# Pagination
+# paginate: 5                                # Posts per page
+# paginate_path: "/page:num/"               # Pagination URL structure
+
+# ===========================================
+# NAVIGATION
+# ===========================================
+
+# Site navigation
+# navigation:
+#   - title: "Home"
+#     url: "/"
+#   - title: "About"
+#     url: "/about"
+#   - title: "Projects"
+#     url: "/projects"
 
 # ===========================================
 # BUILD SETTINGS
@@ -59,17 +107,26 @@ exclude:
   - vendor/
   - README.md
   - scripts/
+  # - _drafts/                               # Draft posts
+  # - _posts/                               # Post files (if not using)
 
 # Include files in build
-include:
-  - _pages/
+# include:
+#   - _pages/                               # Custom pages directory
+#   - _data/                                # Data files directory
 
 # ===========================================
-# CUSTOM COLLECTIONS
+# ADVANCED OPTIONS
 # ===========================================
 
-# Define custom collections (if needed)
-# collections:
-#   projects:
-#     output: true
-#     permalink: /:collection/:name/
+# Jekyll processing
+# incremental: true                         # Incremental builds
+# future: false                             # Show future-dated posts
+# limit_posts: 0                           # Limit number of posts
+# keep_files: []                           # Files to keep during clean
+
+# Liquid processing
+# liquid:
+#   error_mode: warn                        # Liquid error handling
+#   strict_filters: false                   # Strict filter mode
+#   strict_variables: false                 # Strict variable mode

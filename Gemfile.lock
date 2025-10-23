@@ -304,6 +304,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll-theme-cayman
   webrick (~> 1.7)
 
 BUNDLED WITH

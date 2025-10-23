@@ -1,6 +1,26 @@
 {
   "pinned": [
     {
+      "name": "ratter",
+      "description": " BControl code for our high-throughput behavior training facility",
+      "url": "https://github.com/LIMLabSWC/ratter",
+      "stargazerCount": 0,
+      "primaryLanguage": {
+        "name": "MATLAB"
+      },
+      "topics": []
+    },
+    {
+      "name": "shiny-performance-tracking",
+      "description": "ShinyApp to visualize the performance of subjects training on different behaviour protocols",
+      "url": "https://github.com/LIMLabSWC/shiny-performance-tracking",
+      "stargazerCount": 0,
+      "primaryLanguage": {
+        "name": "R"
+      },
+      "topics": []
+    },
+    {
       "name": "glyci_analysis",
       "description": "Code and data supporting our publication \"A cortico-subcortical loop for motor control via the pontine reticular formation\"",
       "url": "https://github.com/viktorpm/glyci_analysis",
@@ -35,26 +55,6 @@
       "stargazerCount": 12,
       "primaryLanguage": {
         "name": "Python"
-      },
-      "topics": []
-    },
-    {
-      "name": "ratter",
-      "description": " BControl code for our high-throughput behavior training facility",
-      "url": "https://github.com/LIMLabSWC/ratter",
-      "stargazerCount": 0,
-      "primaryLanguage": {
-        "name": "MATLAB"
-      },
-      "topics": []
-    },
-    {
-      "name": "shiny-performance-tracking",
-      "description": "ShinyApp to visualize the performance of subjects training on different behaviour protocols",
-      "url": "https://github.com/LIMLabSWC/shiny-performance-tracking",
-      "stargazerCount": 0,
-      "primaryLanguage": {
-        "name": "R"
       },
       "topics": []
     }

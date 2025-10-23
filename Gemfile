@@ -12,4 +12,5 @@ gem "github-pages", group: :jekyll_plugins
 gem "webrick", "~> 1.7"
 
 
-# GitHub Pages supported theme
+# Cayman theme (GitHub Pages supported)
+gem "jekyll-theme-cayman"
