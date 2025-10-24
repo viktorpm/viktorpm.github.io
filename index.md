@@ -15,11 +15,10 @@ title: "Viktor Plattner"
 </div>
 
 ## What I Do
-
-- **Research**: Computational neuroanatomy and motor control
-- **Tools**: Building software for neuroscience data analysis
-- **Infrastructure**: Lab systems and high-throughput behavior training
-- **Collaboration**: Working with organizations like BrainGlobe and Sainsbury Wellcome Centre
+- **Build**: high-throughput training rigs and lab web dashboards
+- **Maintain**: HPC/Servers, data pipelines (Neuropixels + SpikeInterface/Kilosort)
+- **Develop**: tools for neuroscience data analysis and documentation at scale
+- **Collaborate**: BrainGlobe projects
 
 ## Featured Projects
 
