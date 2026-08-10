@@ -148,6 +148,57 @@ query($login:String!) {
 def flatten_topics(rt_nodes):
     return [n["topic"]["name"] for n in rt_nodes] if rt_nodes else []
 
+# Orgs / repos that may not appear via the API (e.g. private membership)
+# but should still show on the site.
+SUPPLEMENTAL_ORGS = [
+    {
+        "name": "No Black Boxes",
+        "login": "NoBlackBoxes",
+        "description": "Everyone can understand their tools.",
+        "url": "https://noblackboxes.org",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/86297273?v=4",
+        "isVerified": False,
+        "role": "Educator",
+    },
+]
+
+ORG_ROLES = {
+    "LIMLabSWC": "Manager",
+    "NoBlackBoxes": "Educator",
+}
+
+SUPPLEMENTAL_PINNED = [
+    {
+        "name": "LastBlackBox",
+        "description": "A course for brains interested in brains (not tools interested in tools)",
+        "url": "https://github.com/NoBlackBoxes/LastBlackBox",
+        "stargazerCount": 65,
+        "primaryLanguage": {"name": "Jupyter Notebook"},
+        "topics": [],
+    },
+]
+
+def merge_by_login(existing, supplemental):
+    known = {item.get("login") for item in existing}
+    merged = list(existing)
+    for item in supplemental:
+        if item.get("login") not in known:
+            merged.append(item)
+    return merged
+
+def merge_pinned(existing, supplemental):
+    known = {item.get("url") for item in existing}
+    merged = [item for item in supplemental if item.get("url") not in known]
+    merged.extend(existing)
+    return merged
+
+def apply_org_roles(orgs):
+    for org in orgs:
+        role = ORG_ROLES.get(org.get("login"))
+        if role:
+            org["role"] = role
+    return orgs
+
 def main():
     os.makedirs("_data", exist_ok=True)
     
@@ -245,6 +296,9 @@ def main():
             print("Warning: Cannot fetch recent repositories - token may need 'repo' scope", file=sys.stderr)
         else:
             raise
+
+    orgs = apply_org_roles(merge_by_login(orgs, SUPPLEMENTAL_ORGS))
+    pinned = merge_pinned(pinned, SUPPLEMENTAL_PINNED)
 
     with open("_data/github_profile.json", "w", encoding="utf-8") as f:
         json.dump(profile, f, ensure_ascii=False, indent=2)

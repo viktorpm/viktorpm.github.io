@@ -29,6 +29,16 @@
     "description": "Welcome to the LIMLabSWC GitHub organization! This is where we manage our project codes, documentation, and other resources requiring version control.",
     "url": "https://github.com/LIMLabSWC",
     "avatarUrl": "https://avatars.githubusercontent.com/u/169274099?v=4",
-    "isVerified": false
+    "isVerified": false,
+    "role": "Admin"
+  },
+  {
+    "name": "No Black Boxes",
+    "login": "NoBlackBoxes",
+    "description": "Everyone can understand their tools.",
+    "url": "https://noblackboxes.org",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/86297273?v=4",
+    "isVerified": false,
+    "role": "Educator"
   }
 ]

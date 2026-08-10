@@ -1,6 +1,16 @@
 {
   "pinned": [
     {
+      "name": "LastBlackBox",
+      "description": "A course for brains interested in brains (not tools interested in tools)",
+      "url": "https://github.com/NoBlackBoxes/LastBlackBox",
+      "stargazerCount": 65,
+      "primaryLanguage": {
+        "name": "Jupyter Notebook"
+      },
+      "topics": []
+    },
+    {
       "name": "ratter",
       "description": " BControl code for our high-throughput behavior training facility",
       "url": "https://github.com/LIMLabSWC/ratter",
