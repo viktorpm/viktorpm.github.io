@@ -53,7 +53,7 @@
 /* Header styling */
 .page-header {
   background-color: var(--primary) !important;
-  background-image: url("../img/cap_mac_hc.png") !important;
+  background-image: url("../img/cap_mac_hc.jpg") !important;
   background-position: center 40%;
   background-size: cover;
 }
@@ -78,6 +78,32 @@ a {
 
 a:hover {
   color: var(--primary-dark) !important;
+}
+
+.organization-card {
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.organization-card:hover,
+.organization-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(38, 50, 56, 0.18);
+}
+
+.organization-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .organization-card {
+    transition: none;
+  }
+
+  .organization-card:hover,
+  .organization-card:focus-visible {
+    transform: none;
+  }
 }
 
 /* Text colors */

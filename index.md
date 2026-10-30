@@ -32,7 +32,7 @@ title: "Viktor Plattner"
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
 {% assign sorted_orgs = site.data.orgs | sort: 'name' %}
 {% for org in sorted_orgs %}
-  <a href="{{ org.url }}" style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid var(--border); border-radius: 8px; background: {% if org.role %}var(--surface-variant){% else %}var(--surface){% endif %}; {% if org.role %}border-left: 4px solid var(--primary);{% endif %}{% if org.login == 'NoBlackBoxes' %} order: -2;{% elsif org.login == 'LIMLabSWC' %} order: -1;{% endif %}; text-decoration: none; color: inherit;">
+  <a class="organization-card" href="{{ org.url }}" style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid var(--border); border-radius: 8px; background: {% if org.role %}var(--surface-variant){% else %}var(--surface){% endif %}; {% if org.role %}border-left: 4px solid var(--primary);{% endif %}{% if org.login == 'NoBlackBoxes' %} order: -2;{% elsif org.login == 'LIMLabSWC' %} order: -1;{% endif %}; text-decoration: none; color: inherit;">
     {% if org.avatarUrl %}
     <img src="{{ org.avatarUrl }}" alt="{{ org.name | default: org.login }}" style="width: 60px; height: 60px; border-radius: 8px;">
     {% endif %}
