@@ -9,7 +9,7 @@ title: "Viktor Plattner"
     {% if site.data.github_profile.bio %}
     {{ site.data.github_profile.bio }}
     {% else %}
-    Neuroscientist working on data systems and lab infrastructure. I focus on computational neuroanatomy, behavior analysis, and building tools for neuroscience research.
+    I build tools and infrastructure for neuroscience, and teach practical hardware and systems through No Black Boxes.
     {% endif %}
   </div>
 </div>
