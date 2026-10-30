@@ -87,7 +87,13 @@ a:hover {
 
 .profile-link {
   display: inline-flex;
+  flex: 0 0 120px;
   border-radius: 50%;
+}
+
+.profile-image {
+  display: block;
+  object-fit: cover;
 }
 
 .organization-card:hover,
