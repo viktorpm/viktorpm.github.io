@@ -16,38 +16,48 @@ Usage:
 The script will prompt for the GitHub token interactively for security.
 """
 
-import json, os, sys, datetime, textwrap
-import urllib.request
-import urllib.error
 import getpass
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
 
 GQL_ENDPOINT = "https://api.github.com/graphql"
-USER_LOGIN = os.environ.get("GH_USER", "viktorpm")
 
-# Get token from environment variable (CI) or prompt interactively (local)
-TOKEN = os.environ.get("GH_TOKEN")
-if not TOKEN:
-    # Interactive mode for local development
-    print("Please enter your GitHub personal access token.")
-    print("Required permissions: read:user, read:org")
-    TOKEN = getpass.getpass("GitHub Token: ").strip()
-    if not TOKEN:
-        print("No token provided. Exiting.", file=sys.stderr)
-        sys.exit(1)
-else:
-    # CI mode - token from environment
-    print("Using GitHub token from environment (CI mode)")
 
-# Allow interactive username input only in local development
-if not os.environ.get("GH_TOKEN") and USER_LOGIN == "viktorpm" and not os.environ.get("GH_USER"):
-    username_input = input("GitHub username (default: viktorpm): ").strip()
-    if username_input:
-        USER_LOGIN = username_input
+# Authentication and API access
+def get_credentials():
+    """Read GitHub credentials from the environment or prompt locally."""
+    user_login = os.environ.get("GH_USER", "viktorpm")
+    token = os.environ.get("GH_TOKEN")
 
-def gql(query, variables=None):
+    if not token:
+        print("Please enter your GitHub personal access token.")
+        print("Required permissions: read:user, read:org")
+        token = getpass.getpass("GitHub Token: ").strip()
+        if not token:
+            print("No token provided. Exiting.", file=sys.stderr)
+            sys.exit(1)
+    else:
+        print("Using GitHub token from environment (CI mode)")
+
+    if (
+        not os.environ.get("GH_TOKEN")
+        and user_login == "viktorpm"
+        and not os.environ.get("GH_USER")
+    ):
+        username_input = input("GitHub username (default: viktorpm): ").strip()
+        if username_input:
+            user_login = username_input
+
+    return token, user_login
+
+
+def gql(query, token, variables=None):
     data = json.dumps({"query": query, "variables": variables or {}}).encode("utf-8")
     req = urllib.request.Request(GQL_ENDPOINT, data=data, method="POST")
-    req.add_header("Authorization", f"bearer {TOKEN}")
+    req.add_header("Authorization", f"bearer {token}")
     req.add_header("Content-Type", "application/json")
     
     try:
@@ -69,7 +79,7 @@ def gql(query, variables=None):
         error_body = ""
         try:
             error_body = e.read().decode("utf-8")
-        except:
+        except OSError:
             error_body = "Could not read error details"
             
         if e.code == 401:
@@ -79,14 +89,14 @@ def gql(query, variables=None):
             print(f"- read:org", file=sys.stderr)
             if error_body:
                 print(f"Error details: {error_body}", file=sys.stderr)
-            print(f"Token starts with: {TOKEN[:8]}..." if len(TOKEN) > 8 else f"Token length: {len(TOKEN)} chars", file=sys.stderr)
+            print(f"Token starts with: {token[:8]}..." if len(token) > 8 else f"Token length: {len(token)} chars", file=sys.stderr)
         else:
             print(f"HTTP Error {e.code}: {e.reason}", file=sys.stderr)
             if error_body:
                 print(f"Error details: {error_body}", file=sys.stderr)
         raise
 
-# Minimal profile query that should work with repo scope
+# GraphQL queries
 PROFILE_MINIMAL_Q = """
 query($login:String!) {
   user(login:$login) {
@@ -145,20 +155,40 @@ query($login:String!) {
 }
 """
 
+
 def flatten_topics(rt_nodes):
     return [n["topic"]["name"] for n in rt_nodes] if rt_nodes else []
 
-# Orgs / repos that may not appear via the API (e.g. private membership)
-# but should still show on the site.
+
+def format_repo(repo, include_activity=False):
+    """Convert a repository response to the site's JSON shape."""
+    formatted = {
+        "name": repo["name"],
+        "description": repo.get("description"),
+        "url": repo["url"],
+        "stargazerCount": repo["stargazerCount"],
+    }
+    if include_activity:
+        formatted.update({
+            "forkCount": repo["forkCount"],
+            "updatedAt": repo["updatedAt"],
+        })
+    formatted["primaryLanguage"] = repo.get("primaryLanguage")
+    formatted["topics"] = flatten_topics(
+        (repo.get("repositoryTopics") or {}).get("nodes", [])
+    )
+    return formatted
+
+
+# Site-specific entries and role labels not provided by the API.
 SUPPLEMENTAL_ORGS = [
     {
         "name": "No Black Boxes",
         "login": "NoBlackBoxes",
         "description": "Everyone can understand their tools.",
-        "url": "https://noblackboxes.org",
+        "url": "https://github.com/NoBlackBoxes",
         "avatarUrl": "https://avatars.githubusercontent.com/u/86297273?v=4",
         "isVerified": False,
-        "role": "Educator",
     },
 ]
 
@@ -178,6 +208,7 @@ SUPPLEMENTAL_PINNED = [
     },
 ]
 
+
 def merge_by_login(existing, supplemental):
     known = {item.get("login") for item in existing}
     merged = list(existing)
@@ -192,6 +223,7 @@ def merge_pinned(existing, supplemental):
     merged.extend(existing)
     return merged
 
+
 def apply_org_roles(orgs):
     for org in orgs:
         role = ORG_ROLES.get(org.get("login"))
@@ -199,22 +231,25 @@ def apply_org_roles(orgs):
             org["role"] = role
     return orgs
 
+
+# Fetch API data and write the files consumed by Jekyll
 def main():
+    token, user_login = get_credentials()
     os.makedirs("_data", exist_ok=True)
     
     # Get basic profile info
     try:
-        d1 = gql(PROFILE_MINIMAL_Q, {"login": USER_LOGIN})
+        d1 = gql(PROFILE_MINIMAL_Q, token, {"login": user_login})
         user = d1["user"]
         profile = {
-          "name": user.get("name"),
-          "login": user["login"],
-          "bio": user.get("bio"),
-          "company": user.get("company"),
-          "location": user.get("location"),
-          "websiteUrl": user.get("websiteUrl"),
-          "avatarUrl": user.get("avatarUrl"),
-          "url": user.get("url"),
+            "name": user.get("name"),
+            "login": user["login"],
+            "bio": user.get("bio"),
+            "company": user.get("company"),
+            "location": user.get("location"),
+            "websiteUrl": user.get("websiteUrl"),
+            "avatarUrl": user.get("avatarUrl"),
+            "url": user.get("url"),
         }
     except RuntimeError as e:
         error_str = str(e)
@@ -222,14 +257,14 @@ def main():
             print("Warning: Cannot fetch profile data - token may need 'read:user' scope", file=sys.stderr)
             print("Using minimal profile data...", file=sys.stderr)
             profile = {
-              "name": None,
-              "login": USER_LOGIN,
-              "bio": None,
-              "company": None,
-              "location": None,
-              "websiteUrl": None,
-              "avatarUrl": None,
-              "url": f"https://github.com/{USER_LOGIN}",
+                "name": None,
+                "login": user_login,
+                "bio": None,
+                "company": None,
+                "location": None,
+                "websiteUrl": None,
+                "avatarUrl": None,
+                "url": f"https://github.com/{user_login}",
             }
         else:
             raise
@@ -237,16 +272,9 @@ def main():
     # Get pinned repositories
     pinned = []
     try:
-        pinned_data = gql(PINNED_REPOS_Q, {"login": USER_LOGIN})
+        pinned_data = gql(PINNED_REPOS_Q, token, {"login": user_login})
         for n in pinned_data["user"].get("pinnedItems", {}).get("nodes", []):
-            pinned.append({
-              "name": n["name"],
-              "description": n.get("description"),
-              "url": n["url"],
-              "stargazerCount": n["stargazerCount"],
-              "primaryLanguage": n.get("primaryLanguage"),
-              "topics": flatten_topics((n.get("repositoryTopics") or {}).get("nodes", [])),
-            })
+            pinned.append(format_repo(n))
     except RuntimeError as e:
         error_str = str(e)
         if "INSUFFICIENT_SCOPES" in error_str:
@@ -257,15 +285,15 @@ def main():
     # Try to get organizations (requires read:org scope)
     orgs = []
     try:
-        org_data = gql(ORGS_Q, {"login": USER_LOGIN})
+        org_data = gql(ORGS_Q, token, {"login": user_login})
         for o in org_data["user"].get("organizations", {}).get("nodes", []):
             orgs.append({
-              "name": o.get("name") or o["login"],
-              "login": o["login"],
-              "description": o.get("description"),
-              "url": o["url"],
-              "avatarUrl": o.get("avatarUrl"),
-              "isVerified": o.get("isVerified"),
+                "name": o.get("name") or o["login"],
+                "login": o["login"],
+                "description": o.get("description"),
+                "url": o["url"],
+                "avatarUrl": o.get("avatarUrl"),
+                "isVerified": o.get("isVerified"),
             })
     except RuntimeError as e:
         error_str = str(e)
@@ -278,18 +306,9 @@ def main():
     # Get recent repositories
     recent = []
     try:
-        d2 = gql(RECENT_REPOS_Q, {"login": USER_LOGIN})
+        d2 = gql(RECENT_REPOS_Q, token, {"login": user_login})
         for r in d2["user"]["repositories"]["nodes"]:
-            recent.append({
-              "name": r["name"],
-              "description": r.get("description"),
-              "url": r["url"],
-              "stargazerCount": r["stargazerCount"],
-              "forkCount": r["forkCount"],
-              "updatedAt": r["updatedAt"],
-              "primaryLanguage": r.get("primaryLanguage"),
-              "topics": flatten_topics((r.get("repositoryTopics") or {}).get("nodes", [])),
-            })
+            recent.append(format_repo(r, include_activity=True))
     except RuntimeError as e:
         error_str = str(e)
         if "INSUFFICIENT_SCOPES" in error_str:
