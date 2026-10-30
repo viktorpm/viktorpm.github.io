@@ -80,28 +80,40 @@ a:hover {
   color: var(--primary-dark) !important;
 }
 
-.organization-card {
+.organization-card,
+.profile-link {
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
+.profile-link {
+  display: inline-flex;
+  border-radius: 50%;
+}
+
 .organization-card:hover,
-.organization-card:focus-visible {
+.organization-card:focus-visible,
+.profile-link:hover,
+.profile-link:focus-visible {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(38, 50, 56, 0.18);
 }
 
-.organization-card:focus-visible {
+.organization-card:focus-visible,
+.profile-link:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .organization-card {
+  .organization-card,
+  .profile-link {
     transition: none;
   }
 
   .organization-card:hover,
-  .organization-card:focus-visible {
+  .organization-card:focus-visible,
+  .profile-link:hover,
+  .profile-link:focus-visible {
     transform: none;
   }
 }

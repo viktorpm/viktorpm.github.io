@@ -4,7 +4,9 @@ title: "Viktor Plattner"
 ---
 
 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
-  <img src="{{ site.data.github_profile.avatarUrl }}" alt="Viktor Plattner" class="profile-image" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary);">
+  <a class="profile-link" href="{{ site.data.github_profile.url }}" aria-label="Visit Viktor's GitHub profile">
+    <img src="{{ site.data.github_profile.avatarUrl }}" alt="" class="profile-image" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary);">
+  </a>
   <div>
     I work across neuroscience research and hands-on technical education.
   </div>
