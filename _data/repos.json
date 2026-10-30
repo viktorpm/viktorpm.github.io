@@ -4,7 +4,7 @@
       "name": "LastBlackBox",
       "description": "A course for brains interested in brains (not tools interested in tools)",
       "url": "https://github.com/NoBlackBoxes/LastBlackBox",
-      "stargazerCount": 65,
+      "stargazerCount": 69,
       "primaryLanguage": {
         "name": "Jupyter Notebook"
       },
@@ -31,20 +31,10 @@
       "topics": []
     },
     {
-      "name": "glyci_analysis",
-      "description": "Code and data supporting our publication \"A cortico-subcortical loop for motor control via the pontine reticular formation\"",
-      "url": "https://github.com/viktorpm/glyci_analysis",
-      "stargazerCount": 0,
-      "primaryLanguage": {
-        "name": "R"
-      },
-      "topics": []
-    },
-    {
       "name": "brainglobe-atlasapi",
       "description": "A Python interface to access neuroanatomical atlases",
       "url": "https://github.com/brainglobe/brainglobe-atlasapi",
-      "stargazerCount": 164,
+      "stargazerCount": 190,
       "primaryLanguage": {
         "name": "Python"
       },
@@ -57,16 +47,6 @@
         "brain",
         "atlases"
       ]
-    },
-    {
-      "name": "brainglobe-template-builder",
-      "description": "Build unbiased anatomical templates from individual images",
-      "url": "https://github.com/brainglobe/brainglobe-template-builder",
-      "stargazerCount": 12,
-      "primaryLanguage": {
-        "name": "Python"
-      },
-      "topics": []
     }
   ],
   "recent": [
@@ -76,7 +56,19 @@
       "url": "https://github.com/viktorpm/viktorpm.github.io",
       "stargazerCount": 0,
       "forkCount": 0,
-      "updatedAt": "2025-10-23T14:36:16Z",
+      "updatedAt": "2026-08-10T07:32:52Z",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "topics": []
+    },
+    {
+      "name": "Scientia-Sacra-epub",
+      "description": null,
+      "url": "https://github.com/viktorpm/Scientia-Sacra-epub",
+      "stargazerCount": 0,
+      "forkCount": 0,
+      "updatedAt": "2026-08-04T13:15:49Z",
       "primaryLanguage": {
         "name": "Python"
       },
@@ -87,7 +79,7 @@
       "description": "Guadrails for agentic AI tool use",
       "url": "https://github.com/viktorpm/veriphi",
       "stargazerCount": 0,
-      "forkCount": 0,
+      "forkCount": 7,
       "updatedAt": "2025-09-25T17:49:19Z",
       "primaryLanguage": {
         "name": "Rust"

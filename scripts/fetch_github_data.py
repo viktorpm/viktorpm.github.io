@@ -163,8 +163,8 @@ SUPPLEMENTAL_ORGS = [
 ]
 
 ORG_ROLES = {
-    "LIMLabSWC": "Manager",
-    "NoBlackBoxes": "Educator",
+    "LIMLabSWC": "Admin & maintainer",
+    "NoBlackBoxes": "Developer & teacher",
 }
 
 SUPPLEMENTAL_PINNED = [

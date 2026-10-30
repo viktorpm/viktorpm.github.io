@@ -71,3 +71,7 @@ Thumbs.db
 
 # Node modules (if you add any JS dependencies later)
 node_modules/
+
+
+# AI assistant files
+AGENTS.md

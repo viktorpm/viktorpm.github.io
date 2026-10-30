@@ -13,7 +13,7 @@
     "description": "Interoperable Python-based tools for computational neuroanatomy",
     "url": "https://github.com/brainglobe",
     "avatarUrl": "https://avatars.githubusercontent.com/u/64580400?v=4",
-    "isVerified": false
+    "isVerified": true
   },
   {
     "name": "SWC/GCNU Neuroinformatics Unit",
@@ -30,7 +30,7 @@
     "url": "https://github.com/LIMLabSWC",
     "avatarUrl": "https://avatars.githubusercontent.com/u/169274099?v=4",
     "isVerified": false,
-    "role": "Admin"
+    "role": "Admin & maintainer"
   },
   {
     "name": "No Black Boxes",
@@ -39,6 +39,6 @@
     "url": "https://noblackboxes.org",
     "avatarUrl": "https://avatars.githubusercontent.com/u/86297273?v=4",
     "isVerified": false,
-    "role": "Educator"
+    "role": "Developer & teacher"
   }
 ]

@@ -1,10 +1,10 @@
 {
   "name": "Viktor Plattner",
   "login": "viktorpm",
-  "bio": "Neuroscientist building the digital infrastructure that keeps our research organised and running.",
+  "bio": "I build tools and infrastructure for neuroscience, and teach practical hardware and systems through No Black Boxes.",
   "company": "UCL - Sainsbury Wellcome Centre",
   "location": "London",
-  "websiteUrl": null,
+  "websiteUrl": "https://noblackboxes.org/",
   "avatarUrl": "https://avatars.githubusercontent.com/u/50667179?u=3ddcd4b03024764f0a2663f7c0bc3b93eb51a121&v=4",
   "url": "https://github.com/viktorpm"
 }

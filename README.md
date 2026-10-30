@@ -47,8 +47,9 @@ graph LR
 
 ## Local development
 
-1. Install Ruby gems:
+1. Install Ruby gems locally (avoids permission issues):
    ```bash
+   bundle config set --local path vendor/bundle
    bundle install
    ```
 2. Fetch data (requires a GitHub token with `read:user`, `read:org` scopes):
