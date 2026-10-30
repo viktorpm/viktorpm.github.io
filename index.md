@@ -6,11 +6,7 @@ title: "Viktor Plattner"
 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
   <img src="{{ site.data.github_profile.avatarUrl }}" alt="Viktor Plattner" class="profile-image" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary);">
   <div>
-    {% if site.data.github_profile.bio %}
-    {{ site.data.github_profile.bio }}
-    {% else %}
-    I build tools and infrastructure for neuroscience, and teach practical hardware and systems through No Black Boxes.
-    {% endif %}
+    I work across neuroscience research and hands-on technical education.
   </div>
 </div>
 
