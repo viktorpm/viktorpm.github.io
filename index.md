@@ -40,8 +40,7 @@ title: "Viktor Plattner"
       <h4 style="margin: 0 0 5px 0; color: var(--text-primary);">{{ org.name | default: org.login }}</h4>
       {% if org.description %}<p style="margin: 0; font-size: 14px; color: var(--text-secondary);">{{ org.description }}</p>{% endif %}
       <div style="margin-top: 5px;">
-        {% if org.role %}<span style="font-size: 12px; color: var(--text-primary); font-weight: bold; background: var(--surface-variant); padding: 2px 6px; border-radius: 4px;">{% if org.login == 'LIMLabSWC' %}⚙️ {% endif %}{{ org.role }}</span>{% endif %}
-        {% if org.isVerified %}<span style="font-size: 12px; color: var(--success); font-weight: bold; margin-left: 8px;">✓ Verified</span>{% endif %}
+        {% if org.role %}<span style="font-size: 12px; color: var(--text-primary); font-weight: bold; background: var(--surface-variant); padding: 0px 0px; border-radius: 0px;">{% if org.login == 'LIMLabSWC' %}{% endif %}{{ org.role }}</span>{% endif %}
       </div>
     </div>
   </a>
