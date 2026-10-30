@@ -53,7 +53,9 @@
 /* Header styling */
 .page-header {
   background-color: var(--primary) !important;
-  background-image: none !important;
+  background-image: url("../img/cap_mac_hc.png") !important;
+  background-position: center;
+  background-size: cover;
 }
 
 .page-header h1 {
