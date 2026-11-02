@@ -88,7 +88,27 @@ a:hover {
 .profile-link {
   display: inline-flex;
   flex: 0 0 120px;
+  position: relative;
   border-radius: 50%;
+}
+
+.profile-github-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.profile-github-badge svg {
+  width: 25px;
+  height: 25px;
 }
 
 .profile-image {
